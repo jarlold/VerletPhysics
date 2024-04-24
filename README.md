@@ -15,6 +15,8 @@ It is at the end of the day a Java application, using an N^2 algorithm for
 collision detection though, so performance isn't impressive. That being said I was still able to make Suika game, Cursed (soft-body) Tetris, and Angry Birds and run them on my 15 year old 32-bit laptop just fine (more than 60fps).<br><br>
 General rule of thumb, don't go past 3,000 point-masses.
 
+<img src=./imgs/suika_game_demo.gif></img>
+
 ## Verlet Physics
 I learned about Verlet physics from ![this](https://youtu.be/lS_qeBy3aQI) video
 and thought the concept was interesting. If you don't know what they are I
