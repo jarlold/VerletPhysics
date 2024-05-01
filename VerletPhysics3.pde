@@ -15,7 +15,7 @@ void setup() {
 }
 
 void draw() {
-  //background(0);
+  background(0);
   noFill();
   stroke(255);
   circle(400, 200, 300*2);
@@ -26,8 +26,6 @@ void draw() {
 
   line(400-100, 300, 400+100, 350);
   
-  if (mousePressed) {
+  if (mousePressed) 
     simulator.points.get(0).current_pos = new PVector(mouseX, mouseY);
-    background(0);
-  }
 }

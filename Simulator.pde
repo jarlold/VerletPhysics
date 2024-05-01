@@ -6,7 +6,7 @@ class Simulator {
  // Gravity and container are technically force-generator/constraints
  // but they affect everything and are pretty ubiquitious so for sake
  // of optimization they will get special treatement
- PVector gravity = new PVector(0, 0);
+ PVector gravity = new PVector(0, 10000);
  
  public Simulator() {
   points = new ArrayList();
