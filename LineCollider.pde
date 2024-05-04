@@ -31,31 +31,14 @@ class LineCollider implements CollisionSystem {
     if ( a.y > b.y & (p.current_pos.y - p.radius > a.y | p.current_pos.y + p.radius< b.y))
       return; 
     
-    // The way im computing the normal angle is not very efficient...
-    float theta;
-    float new_theta;
-    PVector AtoB;
-    PVector vel;
-    PVector new_vel;
-    
+    float d = dist(p.current_pos);
+    PVector tmp;
     // And then make sure he's actually touching the line of course
-    if (dist(p.current_pos) < p.radius) {
-      vel = PVector.sub(p.current_pos, p.previous_pos);
-      AtoB = PVector.sub(a, b);
-      theta = PVector.angleBetween(vel, AtoB);
-      
-      new_theta = AtoB.heading() + PI - theta;
-      new_vel = PVector.fromAngle(new_theta);
-      
-      // There's two ways to rotate by theta, one brings us to the reflected angle
-      // the other brings us back to the original. We want the reflect angle.
-      if (round(degrees(PVector.angleBetween(vel, new_vel))) == 180)
-        new_vel.rotate(2*theta);
-      
-      // Set our point mass to face the right way with the right velocity
-      new_vel.mult(vel.mag());
-      p.previous_pos = new PVector(p.current_pos.x, p.current_pos.y);
-      p.current_pos.sub(new_vel);
+    if (d < p.radius) {
+      tmp = PVector.sub(a, b);
+      tmp.rotate(-PI/2).normalize();
+      tmp.mult(1*(p.radius - d));
+      p.current_pos.add(tmp);
     }
   }
   
